@@ -38,7 +38,7 @@ Si deseas explorar el código y la lógica de generación de datos:
 
 1. **Clona el repositorio:**
    ```bash
-   git clone [https://github.com/tu-usuario/Customer-Behavior-Service-Analytics.git](https://github.com/tu-usuario/Customer-Behavior-Service-Analytics.git)
+   git clone "https://github.com/MaxDCoc/VoltCare-Analytics.git"
    ```
 
 2. **Instala las dependencias necesarias:**
