@@ -3,6 +3,7 @@ import numpy as np
 from faker import Faker
 import random
 from datetime import datetime, timedelta
+import json
 
 # Inicializamos Faker y fijamos una semilla para que el dataset sea reproducible
 fake = Faker('es_AR') # Nombres de empresas y ciudades en formato local
@@ -25,7 +26,6 @@ def generar_clientes(num_clientes=500):
     return pd.DataFrame(clientes)
 
 df_clientes = generar_clientes()
-print("Clientes generados:", len(df_clientes))
 
 def generar_tecnicos(num_tecnicos=50):
     tecnicos = []
@@ -40,7 +40,6 @@ def generar_tecnicos(num_tecnicos=50):
     return pd.DataFrame(tecnicos)
 
 df_tecnicos = generar_tecnicos()
-print("Técnicos generados:", len(df_tecnicos))
 
 def generar_tickets(df_clientes, df_tecnicos, num_tickets=50000):
     tickets = []
@@ -84,11 +83,20 @@ def generar_tickets(df_clientes, df_tecnicos, num_tickets=50000):
     return pd.DataFrame(tickets)
 
 df_tickets = generar_tickets(df_clientes, df_tecnicos)
-print("Tickets generados:", len(df_tickets))
 
 # Guardamos los archivos en la carpeta correspondiente
 df_clientes.to_csv('../data/clientes.csv', index=False)
 df_tecnicos.to_csv('../data/tecnicos.csv', index=False)
 df_tickets.to_csv('../data/tickets.csv', index=False)
 
-print("¡Archivos exportados con éxito!")
+if __name__ == "__main__":
+    df_clientes = generar_clientes()
+    df_tecnicos = generar_tecnicos()
+    df_tickets = generar_tickets(df_clientes, df_tecnicos)
+
+result = {
+    "status": "success",
+    "tickets_generated": len(df_tickets),
+    "clients_generated": len(df_clientes)
+}
+print(json.dumps(result))
