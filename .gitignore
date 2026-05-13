@@ -1,0 +1,19 @@
+# Entorno virtual
+venv/
+env/
+
+# Archivos de Python y Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Datos (no subimos el dataset generado para no saturar el repo)
+data/
+*.csv
+*.xlsx
+*.parquet
+
+# Archivos de Power BI locales (opcional, depende de cuánto pesen)
+# dashboards/*.pbix
+
+.env

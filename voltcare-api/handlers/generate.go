@@ -4,16 +4,17 @@ import (
 	"encoding/json"
 	"net/http"
 	"voltcare-api/services"
+	"voltcare-api/config"
 )
 
 func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 
 	result, err := services.RunPythonScript(
-		"C:\\Users\\asus\\Desktop\\4to\\proyectos\\VoltCare-Analytics\\VoltCare-Analytics\\notebooks\\data_generator.py",
+		config.AppConfig.GenerateScript,
 	)
 
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		WriteJSONError(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 

@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"os/exec"
 	"errors"
+	"voltcare-api/config"
 )
 
 func RunPythonScript(scriptPath string, args ...string) (map[string]interface{}, error) {
 
 	commandArgs := append([]string{scriptPath}, args...)
 
-	cmd := exec.Command("python", commandArgs...)
+	cmd := exec.Command(config.AppConfig.VenvPython, commandArgs...)
 	
 	output, err := cmd.CombinedOutput()
 

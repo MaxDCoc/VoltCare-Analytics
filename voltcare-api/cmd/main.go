@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"voltcare-api/handlers"
+	"voltcare-api/config"
 )
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
@@ -11,10 +12,11 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	config.LoadConfig()
 	http.HandleFunc("/health", healthHandler)
 	http.HandleFunc("/analyze", handlers.AnalyzeHandler)
 	http.HandleFunc("/generate", handlers.GenerateHandler)
 
-	fmt.Println("Servidor corriendo en http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
+	fmt.Println("Servidor corriendo en http://localhost:" +config.AppConfig.Port)
+	http.ListenAndServe(":" +config.AppConfig.Port, nil,)
 }
