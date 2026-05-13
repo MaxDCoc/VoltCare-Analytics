@@ -23,8 +23,8 @@ func LoadConfig() {
 
 	AppConfig = Config{
 		Port:           os.Getenv("PORT"),
-		AnalyzeScript: "../notebooks/data_analysis.py",
-		GenerateScript: "../notebooks/data_generator.py",
-		VenvPython:    "..\\venv\\Scripts\\python.exe",
+		AnalyzeScript: "/app/notebooks/data_analysis.py",
+		GenerateScript: "/app/notebooks/data_generator.py",
+		VenvPython:    "python3",
 	}
 }

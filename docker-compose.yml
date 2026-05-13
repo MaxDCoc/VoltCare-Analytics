@@ -1,0 +1,12 @@
+services:
+
+  voltcare-api:
+
+    build:
+      context: .
+      dockerfile: voltcare-api/Dockerfile
+
+    ports:
+      - "8080:8080"
+
+    container_name: voltcare-api
