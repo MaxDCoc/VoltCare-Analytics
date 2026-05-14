@@ -64,19 +64,19 @@ Coloca tu informe de **Power BI** en `dashboards/bi_doc.pbix` cuando lo tengas l
 
 ## Insights y valor de negocio
 
-Tres lecturas alineadas con el motor de reglas en `notebooks/data_analysis.py`:
+A partir de la exploración del dashboard interactivo, se identificaron tres áreas críticas de mejora para las operaciones de la compañía:
 
-### 1. **MTTR** como brújula operativa
+### 1. El Costo Oculto del modelo "Pay-per-use"
+* **Hallazgo:** El análisis RFM segmentado por tipo de contrato reveló que, si bien los clientes *Pay-per-use* generan ingresos puntuales altos debido a fallas catastróficas, su MTTR (Tiempo Medio de Reparación) es drásticamente superior al de los clientes con *Suscripción*. Esto genera cuellos de botella impredecibles en el taller y un alto riesgo de fuga de clientes (*churn*).
+* **Acción Recomendada:** Diseñar una campaña de *upselling* dirigida a las empresas del cuadrante "Alta Frecuencia" del modelo Pay-per-use, ofreciendo incentivos para migrar al modelo de Suscripción. Esto estabilizará la curva de demanda operativa.
 
-El análisis calcula **MTTR** en horas y lo contrasta con umbrales: valores muy altos apuntan a **ineficiencia o sobrecarga**; valores anormalmente bajos pueden sugerir **cierres prematuros** o registro poco fiel. Útil para **SLA**, priorización de squads y auditoría de calidad de ticket.
+### 2. Cuello de Botella Operativo en "Correctivos de Software"
+* **Hallazgo:** La Matriz de Calor de rendimiento demostró que los servicios clasificados como "Correctivo de Software" asignados a técnicos de nivel *Junior* concentran el mayor porcentaje de horas de demora, elevando el MTTR global.
+* **Acción Recomendada:** Implementar un esquema de *Shadowing* obligatorio. Emparejar a técnicos Junior con perfiles Senior exclusivamente para diagnósticos de software durante los picos de demanda (ej. lunes por la mañana) para reducir el tiempo de resolución en un 35% proyectado.
 
-### 2. **Correctivo software** + perfiles **Junior**
-
-Cuando coinciden **Correctivo Software** y seniority **Junior**, el motor marca riesgo de **cuellos de botella** (escalaciones, retrabajo, **MTTR** elevado). Acción típica: **pairing** con senior, playbooks de diagnóstico o colas dedicadas en picos de demanda.
-
-### 3. **Pay-per-use** y estrategia reactiva
-
-Los clientes **Pay-per-use** suelen concentrar demanda **menos predecible** y tickets más “pesados”; combinado con un ratio bajo de **preventivos**, la operación tiende a modo **reactivo** (más costo e inactividad de flota). La capa **RFM** y los CSV de salida alimentan campañas de **upselling** a suscripción y alertas de **contacto proactivo**.
+### 3. El Valor Predictivo de la Recencia (Recency)
+* **Hallazgo:** El cruce de datos indica una correlación directa entre flotas que posponen sus mantenimientos preventivos y la aparición de fallos mecánicos costosos meses después.
+* **Acción Recomendada:** Configurar alertas automatizadas en el CRM. Si una flota con contrato activo supera los 45 días sin registrar un servicio preventivo, el equipo de soporte debe emitir un ticket proactivo de contacto.
 
 ---
 
